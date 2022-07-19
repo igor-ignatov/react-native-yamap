@@ -48,7 +48,6 @@ import com.yandex.mapkit.map.VisibleRegion;
 import com.yandex.mapkit.map.MapType;
 import com.yandex.mapkit.mapview.MapView;
 import com.yandex.mapkit.transport.TransportFactory;
-import com.yandex.mapkit.transport.masstransit.MasstransitOptions;
 import com.yandex.mapkit.transport.masstransit.MasstransitRouter;
 import com.yandex.mapkit.transport.masstransit.PedestrianRouter;
 import com.yandex.mapkit.transport.masstransit.Route;
@@ -267,8 +266,6 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
             pedestrianRouter.requestRoutes(_points, new TimeOptions(), listener);
             return;
         }
-        MasstransitOptions masstransitOptions = new MasstransitOptions(new ArrayList<String>(), vehicles, new TimeOptions());
-        masstransitRouter.requestRoutes(_points, masstransitOptions, listener);
     }
 
     public void fitAllMarkers() {
@@ -458,11 +455,6 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
         routeMetadata.putMap("sectionInfo", sectionWeightData);
         routeMetadata.putMap("routeInfo", routeWeightData);
         routeMetadata.putInt("routeIndex", routeIndex);
-        final WritableArray stops = new WritableNativeArray();
-        for (RouteStop stop : section.getStops()) {
-            stops.pushString(stop.getStop().getName());
-        }
-        routeMetadata.putArray("stops", stops);
         if (data.getTransports() != null) {
             for (Transport transport : data.getTransports()) {
                 for (String type : transport.getLine().getVehicleTypes()) {
