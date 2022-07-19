@@ -1,6 +1,6 @@
 {
   "name": "react-native-yamap",
-  "version": "4.0.22",
+  "version": "4.0.23",
   "description": "Yandex.MapKit and Yandex.Geocoder for react-native",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -24,6 +24,8 @@
     "yandexmaps",
     "geocoder"
   ],
+  "homepage": "https://github.com/igor-ignatov/react-native-yamap",
+  "author": "Igor Ignatov",
   "license": "",
   "devDependencies": {
     "@commitlint/cli": "17.0.3",
